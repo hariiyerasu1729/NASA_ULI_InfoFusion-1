@@ -11,13 +11,18 @@ Information fusion for real-time national air transportation system prognostics 
 The system can be installed and run on Ubuntu Linux. The steps are as follows:
 
    a.	Download Anaconda for Python version 3.5 (https://repo.continuum.io/archive/Anaconda3-2.4.0-Linux-x86_64.sh).
-   b.	Run “src/dependencies.sh”, which will install the downloaded Anaconda, with necessary Python and Pstgres packages.
+   b.	Run “dependencies.sh”, which will install the downloaded Anaconda, with necessary Python and Pstgres packages.
    c.   Install NATS, as shown in the installation guide. (src/NATS/GettingStartedWith-NATS.pdf)
    d.	Create database “paraatm”, with user “paraatm_user” and password ”paraatm_user” using the installed Pgadmin.
+         - $ sudo -u postgres createuser paraatm_user
+         - $ sudo -u postgres createdb paraatm
+         - sudo -u postgres psql 
+         - psql=# alter user paraatm_user with encrypted password 'paraatm_user';   
+         - psql=# grant all privileges on database paraatm to paraatm_user ;
    e.	Import the database backup “PARA_ATM_Database” into database “paraatm”. 
          - For FAA SWIM authorized users, this backup is available in the ASU Dropbox account "/PARA_ATM_Data".
          - For public usage, the database backup can be found at "data/" folder of project root.
-   f.	Pull project from GitHub into any IDE (Eclipse, IntelliJ, etc.).
+   f.	Pull project from GitHub into any IDE (Eclipse, IntelliJ, etc.), PyDev plugin can be found in Eclipse Marketplace.
    g.	Run “LaunchApp.py” under package "src/PARA_ATM/Application".
 
 ```
